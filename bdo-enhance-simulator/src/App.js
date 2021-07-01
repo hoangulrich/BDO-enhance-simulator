@@ -6,15 +6,15 @@ import { Core } from "./components/Core";
 // import { useState } from "react";
 import "./App.css";
 // import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button } from 'react-bootstrap';
-import Container from 'react-bootstrap/Container'
+import Container from "react-bootstrap/Container";
 
 function App() {
   return (
     <Container>
       <Header />
+      <div className="container2">
         <Core />
-        <Button variant="outline-primary">Primary</Button>{' '}
+      </div>
     </Container>
   );
 }
