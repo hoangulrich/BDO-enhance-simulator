@@ -8,12 +8,31 @@ import ogre2 from "../assets/ogreDUO.PNG";
 import ogre3 from "../assets/ogreTRI.PNG";
 import ogre4 from "../assets/ogreTET.PNG";
 import ogre5 from "../assets/ogrePEN.PNG";
+import Button from 'react-bootstrap/Button'
+import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup'
+import ToggleButton from 'react-bootstrap/ToggleButton'
+import ButtonGroup from 'react-bootstrap/ButtonGroup'
+
 
 export const Core = () => {
   const [eL, setEl] = useState(0);
   const [fs, setFs] = useState(0);
   const [status, setStatus] = useState("");
   const [item, setItem] = useState(ogre0);
+  const [checked, setChecked] = useState(false);
+  const [radioValue, setRadioValue] = useState('1');
+
+  const radios = [
+    { name: 'base - PRI', value: '1' },
+    { name: 'PRI - DUO', value: '2' },
+    { name: 'DUO - TRI', value: '3' },
+    { name: 'TRI - TET', value: '4' },
+
+    { name: 'TET - PEN', value: '5' },
+
+  ];
+
+  
 
   const getChance = (level, fail) => {
     switch (level) {
@@ -48,6 +67,7 @@ export const Core = () => {
     //fail
     else {
       setStatus("Fail");
+      setFs(fs+1)
     }
   };
 
@@ -55,13 +75,31 @@ export const Core = () => {
     <>
       <img src={item} alt="ogre"></img>
       <h1>Enhancement Level</h1>
+      
+      <br />
+      <ButtonGroup toggle>
+        {radios.map((radio, idx) => (
+          <ToggleButton
+            key={idx}
+            type="radio"
+            variant="secondary"
+            name="radio"
+            value={radio.value}
+            checked={radioValue === radio.value}
+            onChange={(e) => setRadioValue(e.currentTarget.value)}
+          >
+            {radio.name}
+          </ToggleButton>
+        ))}
+      </ButtonGroup>
+
       <Elint elint={eL} />
-      <button
+      <button variant="primary"
         onClick={() => {
           setEl(0);
           setItem(ogre0);
         }}
-      >
+      >{' '}
         base - PRI
       </button>
       <button
