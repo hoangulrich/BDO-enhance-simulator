@@ -7,10 +7,12 @@ import { Core } from "./components/Core";
 import "./App.css";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from "react-bootstrap/Container";
+// import Row from "react-bootstrap/Row";
+// import Col from "react-bootstrap/Col";
 
 function App() {
   return (
-    <Container>
+    <Container fluid>
       <Header />
       <div className="container2">
         <Core />
